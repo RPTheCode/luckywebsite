@@ -148,7 +148,7 @@ export const Header = () => {
                 <div className="flex w-full items-center">
                     {/* Hamburger Button */}
                     <div
-                        className={`min-w-[70px] min-h-[70px] items-center justify-center text-white cursor-pointer ml-3  ${expandMenuState ? "hidden" : "flex"
+                        className={`min-w-[70px] min-h-[70px] items-center justify-center text-white cursor-pointer ml-3  ${expandMenuState ? "hidden" : "hidden md:flex"
                             }`}
                         onClick={() => {
                             dispatch(reverse());

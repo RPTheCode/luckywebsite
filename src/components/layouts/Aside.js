@@ -282,7 +282,7 @@ export const Aside = () => {
                     <div
                         className={`flex flex-col z-[99] ${expandMenuState
                             ? isMobileDevice()
-                                ? "w-[388px] md:w-[265px]"
+                                ? "w-[350px] md:w-[265px]"
                                 : "w-[220px] md:w-[265px]"
                             : "w-0 md:w-[0px]"
                             } transition-width duration-[700ms] ease-in-out`}

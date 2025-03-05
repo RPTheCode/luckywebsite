@@ -68,7 +68,7 @@ export const FinancialReport = () => {
     }
 
     return (
-        <div className="max-w-[1200px] m-auto w-full mt-[30px] px-4 md:px-0">
+        <div className="max-w-[1200px] m-auto w-full mt-[30px] px-4">
             <div className="block md:flex justify-between items-center mb-4">
                 <h1 className="text-lg mb-2 md:mb-0 font-bold text-[var(--secondaryColor)]">
                     Transactions History
@@ -102,7 +102,7 @@ export const FinancialReport = () => {
                 ></div>
             ) : (
                 <>
-                    <div className="overflow-x-auto relative shadow-md sm:rounded-lg mt-4">
+                    <div className="overflow-x-auto py-2 relative shadow-md sm:rounded-lg mt-4">
                         <table className="w-full text-sm text-left">
                             <thead className="text-xs text-[var(--textPrimaryColor)] uppercase">
                                 <tr>

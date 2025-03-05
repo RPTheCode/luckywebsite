@@ -148,13 +148,14 @@ export const Header = () => {
                 <div className="flex w-full items-center">
                     {/* Hamburger Button */}
                     <div
-                        className={`hidden md:flex min-w-[70px] min-h-[70px] items-center justify-center text-white cursor-pointer ml-3 ${expandMenuState ? "hidden" : ""
+                        className={`min-w-[70px] min-h-[70px] items-center justify-center text-white cursor-pointer ml-3  ${expandMenuState ? "hidden" : "flex"
                             }`}
                         onClick={() => {
                             dispatch(reverse());
                         }}
                     >
-                        <img src={MenuExpander} alt="menuExpander" />
+                        <img src={MenuExpander} alt="menuExpander" className={`w-[30px] ${expandMenuState ? "hidden" : ""
+                            }`}/>
                     </div>
 
                     <img
@@ -316,18 +317,18 @@ export const Header = () => {
                                     </p> */}
 
                                     <div className="flex flex-col gap-1 md:gap-4 md:flex-row">
-                                        <span className="text-white text-xs md:text-lg w-auto md:px-2 ml-[6px] md:ml-0">
+                                        <span className="text-white welcome-text text-xs md:text-sm lg:text-lg w-auto md:px-2 ml-[6px] md:ml-0">
                                             {"Welcome, " + username + "! "}
                                         </span>
 
                                         <div className="flex gap-2 items-center">
-                                            <span className="text-white text-xs md:text-lg" style={{ marginLeft: "6px" }}>{"Balance: "}
+                                            <span className="text-white welcome-text text-xs md:text-sm lg:text-lg" style={{ marginLeft: "6px" }}>{"Balance: "}
                                                 {loadingBalance
                                                     ? "..."
                                                     : balance.toFixed(2) +
                                                     " CNY "}
                                                 {/* <span className="text-[var(--logoutBg)]" style={{ fontSize: "16px" }}> */}
-                                                <span className="text-[var(--logoutBg)]  text-xs md:text-lg">
+                                                <span className="text-[var(--logoutBg)] welcome-text text-xs md:text-sm lg:text-lg">
                                                     {loadingBalance
                                                         ? "..."
                                                         : " (Turnover: " +
@@ -345,7 +346,7 @@ export const Header = () => {
                                     </div>
 
                                     <button
-                                        className="flex rounded-lg justify-center login-btn w-20 md:w-24 text-xs h-8 md:h-10 lg:text-[16px] items-center !text-[var(--sixthColor) bg-[var(--logoutBg)]]"
+                                        className="flex rounded-lg justify-center login-btn w-20 md:w-24 welcome-text text-xs h-8 md:h-10 lg:text-[16px] items-center !text-[var(--sixthColor) bg-[var(--logoutBg)]]"
                                         onClick={() => {
                                             window.localStorage.removeItem(
                                                 "token"

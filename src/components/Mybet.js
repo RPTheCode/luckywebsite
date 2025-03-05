@@ -16,14 +16,14 @@ export const MyBet = () => {
     };
 
     useEffect(() => {
-       
+
         fetchMyBets();
     }, [selectedGame, currentPage]);
 
     const fetchMyBets = async () => {
         try {
             setLoading(true);
-           const token = window.localStorage.getItem("token");
+            const token = window.localStorage.getItem("token");
 
             const options = {
                 method: "GET",
@@ -40,7 +40,7 @@ export const MyBet = () => {
             await axios
                 .request(options)
                 .then(function (response) {
-                //  console.log("my bets data.."+response.data.gameName);
+                    //  console.log("my bets data.."+response.data.gameName);
                     setMybets(response.data.myBets);
                     console.log(mybets);
                     setLoading(false);
@@ -62,9 +62,9 @@ export const MyBet = () => {
     // Pagination logic
     const indexOfLastBet = currentPage * betsPerPage;
     const indexOfFirstBet = indexOfLastBet - betsPerPage;
-    
+
     //const currentBets = mybets.slice(indexOfFirstBet, indexOfLastBet);
-    const currentBets =Array.isArray(mybets) ? mybets.slice( indexOfFirstBet, indexOfLastBet ) : [];
+    const currentBets = Array.isArray(mybets) ? mybets.slice(indexOfFirstBet, indexOfLastBet) : [];
 
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(mybets.length / betsPerPage); i++) {
@@ -87,7 +87,7 @@ export const MyBet = () => {
                         className="w-[100px] h-[35px] md:w-[200px] md:h-[48px] mr-4 bg-[var(--logoutBg)] text-black text-sm rounded-lg block px-3 outline-none transition duration-300 ease-in-out transform hover:scale-105"
                         aria-label="Select Game"
                         value={selectedGame}
-                        onChange={handleGameChange} 
+                        onChange={handleGameChange}
                     >
                         <option value="All">All</option>
                         <option value="EGAME">EGAME</option>
@@ -113,63 +113,63 @@ export const MyBet = () => {
                 ></div>
             ) : (
                 <>
-                    <div className="overflow-x-auto relative shadow-md sm:rounded-lg mt-4">
+                    <div className="overflow-x-auto py-2 relative shadow-md sm:rounded-lg mt-4">
                         <table className="w-full text-sm text-left mt-5">
                             <thead className="text-xs text-white uppercase">
-                                <tr className="py-3 px-6 border-b-2 border-[var(--logoutBg)]  text-center text-[9px] md:text-xs font-semibold text-white uppercase tracking-wider">
-                                    <th scope="col">#</th>
-                                    <th scope="col">Bet Time</th>
-                                    <th scope="col">Game Type</th>
-                                    <th scope="col">Game Name</th>
-                                    <th scope="col">Game Code</th>
-                                    <th scope="col">Platform</th>
-                                    <th scope="col">Bet Amount</th>
-                                    <th scope="col">Win Amount</th>
+                                <tr className="py-3 px-6 border-b-2 border-[var(--logoutBg)] text-xs font-semibold text-white uppercase tracking-wider">
+                                    <th scope="col" className="py-3 px-6">#</th>
+                                    <th scope="col" className="py-3 px-6">Bet Time</th>
+                                    <th scope="col" className="py-3 px-6">Game Type</th>
+                                    <th scope="col" className="py-3 px-6">Game Name</th>
+                                    <th scope="col" className="py-3 px-6">Game Code</th>
+                                    <th scope="col" className="py-3 px-6">Platform</th>
+                                    <th scope="col" className="py-3 px-6">Bet Amount</th>
+                                    <th scope="col" className="py-3 px-6">Win Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {currentBets.length < 0 ? (
+                                {currentBets.length > 0 ? (
                                     <>
-                                    {currentBets.map((bet, index) => (
-                                        <tr className="text-white border-b border-[var(--logoutBg)]">
-                                            <th
-                                                scope="row"
-                                                className="py-4 px-6 font-medium whitespace-nowrap"
-                                            >
-                                                {/* {indexOfFirstBet + index + 1} */}
-                                                1
-                                            </th>
-                                            <td className="py-4 px-6 text-white">
-                                                {/* {formatDate(bet.betTime)} */}
-                                                2/27/2025
-                                            </td>
-                                            <td className="text-right py-4 px-6 text-white">
-                                                {/* {bet.gameType} */}
-                                                Phone
-                                            </td>
-                                            <td className="py-4 px-6 text-[var(--logoutBg)]">
-                                                {/* {bet.gameName} */}
-                                                pubg
-                                            </td>
-                                            <td className="text-right py-4 px-6">
-                                                {/* {bet.gameCode} */}
-                                                1234
-                                            </td>
-                                            <td className="text-right py-4 px-6">
-                                                {/* {bet.platform} */}
-                                                online
-                                            </td>
-                                            <td className="text-right py-4 px-6 text-[var(--logoutBg)]">
-                                                {/* {bet.betAmount} */}
-                                                5000
-                                            </td>
-                                            <td className="text-right py-4 px-6 text-white">
-                                                {/* {bet.winAmount} */}
-                                                10000
-                                            </td>
-                                        </tr>
-                                    ))
- } </>) : (
+                                        {currentBets.map((bet, index) => (
+                                            <tr className="text-white border-b border-[var(--logoutBg)]">
+                                                <th
+                                                    scope="row"
+                                                    className="py-4 px-6 font-medium whitespace-nowrap"
+                                                >
+                                                    {indexOfFirstBet + index + 1}
+
+                                                </th>
+                                                <td className="py-4 px-6 text-white">
+                                                    {formatDate(bet.betTime)}
+
+                                                </td>
+                                                <td className="text-right py-4 px-6 text-white">
+                                                    {bet.gameType}
+
+                                                </td>
+                                                <td className="py-4 px-6 text-[var(--logoutBg)]">
+                                                    {bet.gameName}
+
+                                                </td>
+                                                <td className="text-right py-4 px-6">
+                                                    {bet.gameCode}
+
+                                                </td>
+                                                <td className="text-right py-4 px-6">
+                                                    {bet.platform}
+
+                                                </td>
+                                                <td className="text-right py-4 px-6 text-[var(--logoutBg)]">
+                                                    {bet.betAmount}
+
+                                                </td>
+                                                <td className="text-right py-4 px-6 text-white">
+                                                    {bet.winAmount}
+
+                                                </td>
+                                            </tr>
+                                        ))
+                                        } </>) : (
                                     <tr className="text-white border-b border-[var(--logoutBg)]">
                                         <td
                                             colSpan={8}
@@ -203,8 +203,8 @@ export const MyBet = () => {
                                     <button
                                         key={number}
                                         className={`px-3 py-1 border rounded mx-1 ${currentPage === number
-                                                ? "bg-blue-500 text-white"
-                                                : "bg-white text-black"
+                                            ? "bg-blue-500 text-white"
+                                            : "bg-white text-black"
                                             }`}
                                         onClick={() => setCurrentPage(number)}
                                     >
